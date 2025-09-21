@@ -1,3 +1,0 @@
-/home/jinlong/Projects/face-blur-gui-app/build/CMakeFiles/face_blur_gui_app.dir
-/home/jinlong/Projects/face-blur-gui-app/build/CMakeFiles/edit_cache.dir
-/home/jinlong/Projects/face-blur-gui-app/build/CMakeFiles/rebuild_cache.dir
