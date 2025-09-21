@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/jinlong/Projects/face-blur-gui-app/face-blur-gui-app",
+    "files.associations": {
+        "iostream": "cpp"
+    }
+}
