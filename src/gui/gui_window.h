@@ -1,7 +1,8 @@
 #pragma once
 
-class GuiWindow {
-public:
+class GuiWindow
+{
+  public:
     GuiWindow();
     void open();
     bool isRunning();

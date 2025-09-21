@@ -1,16 +1,19 @@
 #include "file_utils.h"
-#include <opencv2/imgcodecs.hpp>
 #include <filesystem>
+#include <opencv2/imgcodecs.hpp>
 
-cv::Mat loadImage(const std::string& filePath) {
+cv::Mat loadImage(const std::string &filePath)
+{
     return cv::imread(filePath);
 }
 
-bool fileExists(const std::string& fileName) {
+bool fileExists(const std::string &fileName)
+{
     return std::filesystem::exists(fileName);
 }
 
-std::string saveImage(const cv::Mat& image, const std::string& originalFileName) {
+std::string saveImage(const cv::Mat &image, const std::string &originalFileName)
+{
     std::filesystem::path path(originalFileName);
     std::string baseName = path.stem().string();
     std::string extension = path.extension().string();
@@ -18,7 +21,8 @@ std::string saveImage(const cv::Mat& image, const std::string& originalFileName)
     std::string newFileName = dir + "/" + baseName + "_blurred" + extension;
     int counter = 1;
 
-    while (fileExists(newFileName)) {
+    while (fileExists(newFileName))
+    {
         newFileName = dir + "/" + baseName + "_blurred(" + std::to_string(counter) + ")" + extension;
         counter++;
     }
