@@ -12,3 +12,32 @@ cv::Mat blurFaces(const cv::Mat &image, const std::vector<FaceCoordinates> &face
     }
     return result;
 }
+
+void onMouse(int event, int x, int y, int, void *userdata)
+{
+    if (event != cv::EVENT_LBUTTONDOWN)
+        return;
+    if (userdata == nullptr)
+        return;
+
+    MouseContext *ctx = static_cast<MouseContext *>(userdata);
+    cv::Mat display = ctx->original.clone();
+
+    for (auto &region : ctx->faces)
+    {
+        if (region.rect.contains(cv::Point(x, y)))
+        {
+            region.blurred = !region.blurred;
+        }
+
+        if (region.blurred)
+        {
+            cv::Mat roi = display(region.rect);
+            cv::GaussianBlur(roi, roi, cv::Size(0, 0), 30);
+        }
+
+        cv::rectangle(display, region.rect, cv::Scalar(0, 255, 0), 2);
+    }
+
+    cv::imshow("Interactive Blur", display);
+}

@@ -5,6 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(Qt6 COMPONENTS Widgets REQUIRED)
 find_package(OpenCV REQUIRED)
+find_package(Boost REQUIRED COMPONENTS program_options)
+
+include_directories(${Boost_INCLUDE_DIRS})
 
 include_directories(
     ${OpenCV_INCLUDE_DIRS}
@@ -24,4 +27,5 @@ add_executable(face_blur_gui_app
 target_link_libraries(face_blur_gui_app
     Qt6::Widgets
     ${OpenCV_LIBS}
+    ${Boost_LIBRARIES}
 )
